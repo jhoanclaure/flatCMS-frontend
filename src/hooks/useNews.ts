@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNews } from "../services/news.service";
-import { News } from "../types/news.types";
+import type { News } from "../types/news.types";
 
 export const useNews = () => {
   const [news, setNews] = useState<News[]>([]);

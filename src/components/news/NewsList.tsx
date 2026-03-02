@@ -1,5 +1,6 @@
-import { News } from "../../types/news.types";
+import type { News } from "../../types/news.types";
 import NewsCard from "./NewsCard";
+import "./NewsList.css";
 
 interface Props {
   news: News[];
@@ -7,20 +8,12 @@ interface Props {
 
 const NewsList = ({ news }: Props) => {
   return (
-    <section style={styles.grid}>
+    <section className="news-grid">
       {news.map((item) => (
         <NewsCard key={item.id} news={item} />
       ))}
     </section>
   );
-};
-
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "2rem",
-  },
 };
 
 export default NewsList;
