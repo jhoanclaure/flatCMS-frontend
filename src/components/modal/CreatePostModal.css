@@ -38,12 +38,31 @@
   gap: 1.5rem;
 }
 
-.upload-box,
+.upload-box {
+  width: 90px;
+  height: 90px;
+  background: #ddd;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-icon {
+  font-size: 40px;
+  color: #555;
+}
+
 .add-box {
   width: 90px;
   height: 90px;
   background: #ddd;
   border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .publish-btn {

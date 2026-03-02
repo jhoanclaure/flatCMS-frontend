@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Modal = ({ isOpen, onClose, children }: Props) => {
-  // Cerrar con ESC
+  
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
