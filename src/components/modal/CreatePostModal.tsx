@@ -18,7 +18,6 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   
-  // Referencia para ocultar el input real de tipo file
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageClick = () => {
@@ -34,6 +33,10 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
   };
 
   const handlePublish = async () => {
+    // 1. Cierra el modal inmediatamente al hacer clic
+    onClose();
+
+    // 2. Continúa procesando la petición
     try {
       await createNews({
         title,
@@ -41,14 +44,12 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
         image: imageFile
       });
       
-      // Limpiar estados y cerrar modal tras el éxito
+      // Limpiar los estados para la próxima vez que se abra el modal
       setTitle("");
       setContent("");
       setImageFile(null);
       setPreview(null);
-      onClose();
       
-      // Opcional: Aquí podrías recargar las noticias llamando a una función del padre
     } catch (error) {
       console.error("Error al publicar la noticia:", error);
     }
@@ -77,7 +78,6 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
         />
 
         <div className="actions">
-          {/* Input oculto para subir archivos */}
           <input 
             type="file" 
             accept="image/*" 
@@ -98,9 +98,9 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
             )}
           </section>
 
-          <section className="add-box">
+          {/*<section className="add-box">
             <FaPlus className="upload-icon" />
-          </section>
+          </section>*/}
           
           <button className="publish-btn" onClick={handlePublish}>
             Publicar
