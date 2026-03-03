@@ -3,7 +3,6 @@ import Modal from "./Modal";
 import "./CreatePostModal.css";
 
 import { BiSolidImageAlt } from "react-icons/bi";
-import { FaPlus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { createNews } from "../../services/news.service"; // Importamos tu servicio
 
@@ -33,10 +32,8 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
   };
 
   const handlePublish = async () => {
-    // 1. Cierra el modal inmediatamente al hacer clic
     onClose();
 
-    // 2. Continúa procesando la petición
     try {
       await createNews({
         title,
@@ -44,7 +41,6 @@ const CreatePostModal = ({ isOpen, onClose }: Props) => {
         image: imageFile
       });
       
-      // Limpiar los estados para la próxima vez que se abra el modal
       setTitle("");
       setContent("");
       setImageFile(null);
