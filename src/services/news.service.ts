@@ -1,4 +1,4 @@
-import type { News } from "../types/news.types";
+{/*import type { News } from "../types/news.types";
 
 export const getNews = async (): Promise<News[]> => {
   // Simulación API
@@ -30,4 +30,39 @@ export const getNews = async (): Promise<News[]> => {
       ]);
     }, 500);
   });
+};*/}
+export const getNews = async () => {
+  const response = await fetch("http://localhost:4000/api/news");
+
+  if (!response.ok) {
+    throw new Error("Error al obtener noticias");
+  }
+
+  return response.json();
+};
+
+export const createNews = async (data: {
+  title?: string;
+  content: string;
+  image?: File | null;
+}) => {
+  const formData = new FormData();
+
+  formData.append("title", data.title || "");
+  formData.append("content", data.content);
+
+  if (data.image) {
+    formData.append("image", data.image); // debe llamarse igual que upload.single("image")
+  }
+
+  const response = await fetch("http://localhost:4000/api/news", {
+    method: "POST",
+    body: formData, // ⚠️ SIN headers
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al crear noticia");
+  }
+
+  return response.json();
 };
