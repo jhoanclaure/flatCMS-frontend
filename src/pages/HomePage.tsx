@@ -5,6 +5,7 @@ import NewsList from "../components/news/NewsList";
 import CreatePostModal from "../components/modal/CreatePostModal";
 import { useNews } from "../hooks/useNews";
 import "./HomePage.css";
+import Footer from "../components/layout/Footer";
 
 const HomePage = () => {
   const { news, loading, error } = useNews();
@@ -26,6 +27,7 @@ const HomePage = () => {
           onClose={() => setIsModalOpen(false)}
         />
       </main>
+      <Footer/>
     </>
   );
 };

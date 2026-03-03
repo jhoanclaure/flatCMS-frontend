@@ -21,6 +21,7 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 1rem;
+  outline: none;
 }
 
 .body-textarea {
@@ -30,6 +31,7 @@
   border-radius: 10px;
   min-height: 150px;
   resize: none;
+  outline: none;
 }
 
 .actions {

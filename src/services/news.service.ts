@@ -32,7 +32,7 @@ export const getNews = async (): Promise<News[]> => {
   });
 };*/}
 export const getNews = async () => {
-  const response = await fetch("http://localhost:4000/api/news");
+  const response = await fetch("https://flatcms-backend-1.onrender.com/api/news");
 
   if (!response.ok) {
     throw new Error("Error al obtener noticias");
@@ -55,7 +55,7 @@ export const createNews = async (data: {
     formData.append("image", data.image); // debe llamarse igual que upload.single("image")
   }
 
-  const response = await fetch("http://localhost:4000/api/news", {
+  const response = await fetch("https://flatcms-backend-1.onrender.com/api/news", {
     method: "POST",
     body: formData, // ⚠️ SIN headers
   });
